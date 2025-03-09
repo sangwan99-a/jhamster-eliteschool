@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.domain.Persistable;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Persistable;
 /**
  * A Authority.
  */
+@Data
 @Entity
 @Table(name = "jhi_authority")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -33,17 +35,9 @@ public class Authority implements Serializable, Persistable<String> {
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
-    public String getName() {
-        return this.name;
-    }
-
     public Authority name(String name) {
         this.setName(name);
         return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @PostLoad
@@ -68,30 +62,6 @@ public class Authority implements Serializable, Persistable<String> {
         this.isPersisted = true;
         return this;
     }
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Authority)) {
-            return false;
-        }
-        return getName() != null && getName().equals(((Authority) o).getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getName());
-    }
-
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "Authority{" +
-            "name=" + getName() +
-            "}";
-    }
 }

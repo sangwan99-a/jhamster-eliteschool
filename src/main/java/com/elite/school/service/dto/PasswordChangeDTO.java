@@ -1,10 +1,12 @@
 package com.elite.school.service.dto;
 
 import java.io.Serializable;
+import lombok.*;
 
 /**
  * A DTO representing a password change required data - current and new password.
  */
+@Data
 public class PasswordChangeDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,22 +20,6 @@ public class PasswordChangeDTO implements Serializable {
 
     public PasswordChangeDTO(String currentPassword, String newPassword) {
         this.currentPassword = currentPassword;
-        this.newPassword = newPassword;
-    }
-
-    public String getCurrentPassword() {
-        return currentPassword;
-    }
-
-    public void setCurrentPassword(String currentPassword) {
-        this.currentPassword = currentPassword;
-    }
-
-    public String getNewPassword() {
-        return newPassword;
-    }
-
-    public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
 }
