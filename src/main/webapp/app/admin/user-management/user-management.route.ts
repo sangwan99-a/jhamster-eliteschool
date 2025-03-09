@@ -35,6 +35,7 @@ const userManagementRoute: Routes = [
       user: userManagementResolve,
     },
   },
+
   {
     path: ':login/edit',
     loadComponent: () => import('./update/user-management-update.component'),
