@@ -1,4 +1,4 @@
-package com.elite.school.web.rest;
+package com.elite.school.web.rest.controller;
 
 import com.elite.school.domain.Authority;
 import com.elite.school.repository.AuthorityRepository;
@@ -24,9 +24,9 @@ import tech.jhipster.web.util.ResponseUtil;
 @RestController
 @RequestMapping("/api/authorities")
 @Transactional
-public class AuthorityResource {
+public class AuthorityController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AuthorityResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AuthorityController.class);
 
     private static final String ENTITY_NAME = "adminAuthority";
 
@@ -35,7 +35,7 @@ public class AuthorityResource {
 
     private final AuthorityRepository authorityRepository;
 
-    public AuthorityResource(AuthorityRepository authorityRepository) {
+    public AuthorityController(AuthorityRepository authorityRepository) {
         this.authorityRepository = authorityRepository;
     }
 

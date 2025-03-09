@@ -1,4 +1,4 @@
-package com.elite.school.web.rest;
+package com.elite.school.web.rest.controller;
 
 import com.elite.school.domain.User;
 import com.elite.school.repository.UserRepository;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/api")
-public class AccountResource {
+public class AccountController {
 
     private static class AccountResourceException extends RuntimeException {
 
@@ -32,7 +32,7 @@ public class AccountResource {
         }
     }
 
-    private static final Logger LOG = LoggerFactory.getLogger(AccountResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AccountController.class);
 
     private final UserRepository userRepository;
 
@@ -40,7 +40,7 @@ public class AccountResource {
 
     private final MailService mailService;
 
-    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
+    public AccountController(UserRepository userRepository, UserService userService, MailService mailService) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;

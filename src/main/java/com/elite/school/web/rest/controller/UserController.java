@@ -1,4 +1,4 @@
-package com.elite.school.web.rest;
+package com.elite.school.web.rest.controller;
 
 import com.elite.school.config.Constants;
 import com.elite.school.domain.User;
@@ -57,7 +57,7 @@ import tech.jhipster.web.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("/api/admin")
-public class UserResource {
+public class UserController {
 
     private static final List<String> ALLOWED_ORDERED_PROPERTIES = Collections.unmodifiableList(
         Arrays.asList(
@@ -75,7 +75,7 @@ public class UserResource {
         )
     );
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
@@ -86,7 +86,7 @@ public class UserResource {
 
     private final MailService mailService;
 
-    public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
+    public UserController(UserService userService, UserRepository userRepository, MailService mailService) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.mailService = mailService;

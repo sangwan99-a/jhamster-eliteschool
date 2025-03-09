@@ -1,4 +1,4 @@
-package com.elite.school.web.rest;
+package com.elite.school.web.rest.controller;
 
 import com.elite.school.service.UserService;
 import com.elite.school.service.dto.UserDTO;
