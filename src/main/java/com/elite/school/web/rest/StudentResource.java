@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
@@ -43,6 +44,7 @@ public class StudentResource {
     }
 
     @PostMapping("")
+    @PreAuthorize("hasAnyAuthority('PRINCIPAL', 'TEACHER')")
     public ResponseEntity<Student> createStudent(@RequestBody Student student) throws URISyntaxException {
         log.debug("REST request to save Student : {}", student);
         if (student.getId() != null) {
@@ -56,6 +58,7 @@ public class StudentResource {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('PRINCIPAL', 'TEACHER')")
     public ResponseEntity<Student> updateStudent(
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody Student student
@@ -80,6 +83,7 @@ public class StudentResource {
     }
 
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PreAuthorize("hasAnyAuthority('PRINCIPAL', 'TEACHER')")
     public ResponseEntity<Student> partialUpdateStudent(
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody Student student
@@ -105,6 +109,7 @@ public class StudentResource {
     }
 
     @GetMapping("")
+    @PreAuthorize("hasAnyAuthority('PRINCIPAL', 'TEACHER', 'STUDENT')")
     public ResponseEntity<List<Student>> getAllStudents(Pageable pageable) {
         log.debug("REST request to get a page of Students");
         Page<Student> page = studentService.findAll(pageable);
@@ -113,6 +118,7 @@ public class StudentResource {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('PRINCIPAL', 'TEACHER', 'STUDENT')")
     public ResponseEntity<Student> getStudent(@PathVariable("id") Long id) {
         log.debug("REST request to get Student : {}", id);
         Optional<Student> student = studentService.findOne(id);
@@ -120,6 +126,7 @@ public class StudentResource {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PRINCIPAL')")
     public ResponseEntity<Void> deleteStudent(@PathVariable("id") Long id) {
         log.debug("REST request to delete Student : {}", id);
         studentService.delete(id);

@@ -13,6 +13,7 @@
         data-cy="entityCreateButton"
         class="btn btn-primary jh-create-entity create-student"
         [routerLink]="['/student/new']"
+        *jhiHasAnyAuthority]="['PRINCIPAL', 'TEACHER']"
       >
         <fa-icon icon="plus"></fa-icon>
         <span jhiTranslate="schoolApp.student.home.createLabel">Create a new Student</span>
@@ -74,12 +75,19 @@
                 [routerLink]="['/student', student.id, 'edit']"
                 class="btn btn-primary btn-sm"
                 data-cy="entityEditButton"
+                *jhiHasAnyAuthority]="['PRINCIPAL', 'TEACHER']"
               >
                 <fa-icon icon="pencil-alt"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
               </button>
 
-              <button type="submit" (click)="delete(student)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+              <button
+                type="submit"
+                (click)="delete(student)"
+                class="btn btn-danger btn-sm"
+                data-cy="entityDeleteButton"
+                *jhiHasAnyAuthority]="'PRINCIPAL'"
+              >
                 <fa-icon icon="times"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
               </button>
